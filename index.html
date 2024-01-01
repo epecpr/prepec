@@ -55,6 +55,40 @@
     const analytics = getAnalytics(app);
 
     console.log(app);
-  </script>
+
+    // ... (Your existing Firebase initialization code)
+
+    // Get a reference to the authentication service
+    const auth = getAuth(app);
+
+    // Function to handle form submission
+    const handleLogin = async (event) => {
+        event.preventDefault();
+
+        // Get the values from the form
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            // Authenticate the user with Firebase
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+
+            // If authentication is successful, you can redirect the user to a desired page
+            console.log("Authentication successful", userCredential.user);
+            // Add your redirection logic here, for example:
+            window.location.href = "ex.html";
+        } catch (error) {
+            // Handle authentication errors
+            console.error("Authentication failed", error.message);
+            // You can display an error message to the user if needed
+        }
+    };
+
+    // Attach the handleLogin function to the form submission event
+    document.querySelector("form").addEventListener("submit", handleLogin);
+
+     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+</script>
+
 
 </html>
