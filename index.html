@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="login-container">
+        <form action="#" method="post">
+            <h2>Login</h2>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Login</button>
+        </form>
+        <a href="#">Forgot Password?</a>
+
+        <!-- Social Media Icons with Links -->
+        <div class="social-icons">
+            <a href="https://www.instagram.com/vit_pune_official" target="_blank"><img src="./Resources/Instagram.png" alt="Instagram"></a>
+            <a href="https://www.youtube.com/@VITstudentactivities" target="_blank"><img src="./Resources/YouTube.png" alt="YouTube"></a>
+            <a href="https://www.linkedin.com/company/epec-vit-pune/mycompany/" target="_blank"><img src="./Resources/LinkedIn.png" alt="LinkedIn"></a>
+            <!--<a href="vitepec@vit.edu" target="_blank"><img src="./Resources/Gmail.png" alt="Gmail"></a> -->
+            <a href="https://epecvitpune.com/" target="_blank"><img src="./Resources/Website.png" alt="Website"></a>
+        </div>
+    </div>
+</body>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAfILImMFGaaXPCggUgdmTAMliW0giv4DY",
+        authDomain: "epecpr2324.firebaseapp.com",
+        projectId: "epecpr2324",
+        storageBucket: "epecpr2324.appspot.com",
+        messagingSenderId: "959705690151",
+        appId: "1:959705690151:web:c591bf4727bd3221d15e02",
+        measurementId: "G-M90HNGTMGX"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
+
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+
+            console.log("Authentication successful", userCredential.user);
+            window.location.href = "./Webpages/prdashboard.html";
+        } catch (error) {
+            console.error("Authentication failed", error.message);
+
+            const errorMessageElement = document.getElementById("error-message");
+            errorMessageElement.textContent = "Invalid credentials. Please try again.";
+        }
+    };
+
+    document.querySelector("form").addEventListener("submit", handleLogin);
+</script>
+
+
+</html>
