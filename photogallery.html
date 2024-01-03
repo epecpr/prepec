@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="photogallery.css"> 
+    <title>Photo Gallery</title>
+</head>
+<body>
+    <div class="background-image"></div>
+    <div class="button-container">
+        <a href="https://drive.google.com/drive/folders/1-2N4gxJOZZqUkc3Aud7QW-xX2YRVG4lD" class="button">Teachers Day</a>
+        <!-- <a href="https://drive.google.com/drive/folders/1f1WPgXysDXC-iIcHsnAlqEOus2W4peCd?usp=sharing" class="button">Fresher's Party</a> -->
+        <a href="https://drive.google.com/drive/folders/1h7pCZYhcz-og2d32quevUUA3_w6Dx7TX" class="button">Republic Day</a>
+        <a href="https://drive.google.com/drive/folders/1unASUUohFJhCB24R1o3XxbJIAmIyzDwv" class="button">Vishwakarandak</a>
+        <a href="https://drive.google.com/drive/folders/10Xy08PBxfkH_arCh4zw_oqQqdUKUvbll" class="button">Melange & Vishwautsav</a>
+    </div>
+
+    <div class="button-container-right">
+        <a href="https://drive.google.com/drive/folders/19-ACy67Rl40YRo5qbiRwsdGYAUvKqZpf?usp=sharing" class="button">Independence Day</a>
+        <a href="https://drive.google.com/drive/folders/19cC2tE1-Nayt8ETow8Id5MbnYqlusUIt" class="button">Offline Induction</a>
+        <a href="https://drive.google.com/drive/folders/11mOONx1mEYGPIlHg5suI6L7i-NJBf-uO?usp=sharing" class="button">Teachers Day</a>
+        <a href="https://drive.google.com/drive/folders/1-C5ILUrEDkLMOhdRTUvi4Ykop9NDxb7e" class="button">Fresher's Party</a> 
+        <a href="https://drive.google.com/drive/folders/1bvrPOmJmE6ak50OhdmoKTlJkyJJgUMle?usp=sharing" class="button">VTS - General Photos</a>
+        <a href="https://drive.google.com/drive/folders/1LULpo4jWtLsHSZdK8g-9wHmhJOJbV6rN" class="button">VTS - All Photos</a>
+        <a href="https://drive.google.com/drive/folders/1RLzwgrNsEM6WuLINmudh-FdUyN5etu8O?usp=sharing" class="button">Brave Talks</a>
+    </div>
+      <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfILImMFGaaXPCggUgdmTAMliW0giv4DY",
+            authDomain: "epecpr2324.firebaseapp.com",
+            projectId: "epecpr2324",
+            storageBucket: "epecpr2324.appspot.com",
+            messagingSenderId: "959705690151",
+            appId: "1:959705690151:web:c591bf4727bd3221d15e02",
+            measurementId: "G-M90HNGTMGX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // Check authentication status on page load
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // If user is not authenticated, redirect to the login page
+                window.location.href = "index.html";
+            }
+        });
+    </script>
+
+</body>
+</html>
