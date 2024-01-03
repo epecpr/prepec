@@ -60,7 +60,7 @@
             const userCredential = await signInWithEmailAndPassword(auth, username, password);
 
             console.log("Authentication successful", userCredential.user);
-            window.location.href = "photogallery.html";
+            window.location.href = "./Webpages/photogallery.html";
         } catch (error) {
             console.error("Authentication failed", error.message);
 
