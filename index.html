@@ -31,57 +31,44 @@
         </div>
     </div>
 </body>
-
 <script type="module">
-    // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
     import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyAfILImMFGaaXPCggUgdmTAMliW0giv4DY",
-      authDomain: "epecpr2324.firebaseapp.com",
-      projectId: "epecpr2324",
-      storageBucket: "epecpr2324.appspot.com",
-      messagingSenderId: "959705690151",
-      appId: "1:959705690151:web:c591bf4727bd3221d15e02",
-      measurementId: "G-M90HNGTMGX"
+        apiKey: "AIzaSyAfILImMFGaaXPCggUgdmTAMliW0giv4DY",
+        authDomain: "epecpr2324.firebaseapp.com",
+        projectId: "epecpr2324",
+        storageBucket: "epecpr2324.appspot.com",
+        messagingSenderId: "959705690151",
+        appId: "1:959705690151:web:c591bf4727bd3221d15e02",
+        measurementId: "G-M90HNGTMGX"
     };
-  
-    // Initialize Firebase
+
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    // Function to handle form submission
     const handleLogin = async (event) => {
         event.preventDefault();
 
-        // Get the values from the form
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
 
         try {
-            // Authenticate the user with Firebase
             const userCredential = await signInWithEmailAndPassword(auth, username, password);
 
-            // If authentication is successful, you can redirect the user to a desired page
             console.log("Authentication successful", userCredential.user);
-            // Add your redirection logic here, for example:
             window.location.href = "./Webpages/photogallery.html";
         } catch (error) {
-            // Handle authentication errors
             console.error("Authentication failed", error.message);
-            
-            // Display an error message to the user
+
             const errorMessageElement = document.getElementById("error-message");
             errorMessageElement.textContent = "Invalid credentials. Please try again.";
         }
     };
 
-    // Attach the handleLogin function to the form submission event
     document.querySelector("form").addEventListener("submit", handleLogin);
 </script>
 
