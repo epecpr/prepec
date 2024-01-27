@@ -12,12 +12,40 @@
         <a href="https://drive.google.com/drive/folders/1hDYONsnfyP7A31w6_oDIyGyfXwJHSwAG" class="button">Resources for Sponsorship</a>
         <a href="https://youtu.be/ZFRluXcBHWU" class="button">Sponsorship Testimonial Reel</a>
         <a href="https://drive.google.com/drive/folders/16TjemZJmaGlRvhMrctLXrMgONJIx-xA0?usp=sharing" class="button">Database of MoU</a>
-        <a href="https://docs.google.com/spreadsheets/d/1sBKffIm-aekX7NM80rwQTO5mhICWV-QgeF7Aa3TVOMs/edit?usp=sharing" class="button">Contact Status (Vishwakarandak'24)</a>
-        <a href="https://docs.google.com/spreadsheets/d/1ELXs0Rh2wV9xC-KL8rxj0QG0SuJyftVYkyKPJXwLoQk/edit#gid=769451621" class="button">Main Database</a>
+        <!-- <a href="https://docs.google.com/spreadsheets/d/1sBKffIm-aekX7NM80rwQTO5mhICWV-QgeF7Aa3TVOMs/edit?usp=sharing" class="button">Contact Status (Vishwakarandak'24)</a>
+        <a href="https://docs.google.com/spreadsheets/d/1ELXs0Rh2wV9xC-KL8rxj0QG0SuJyftVYkyKPJXwLoQk/edit#gid=769451621" class="button">Main Database</a> -->
         <!-- <a href="https://drive.google.com/drive/folders/1h7pCZYhcz-og2d32quevUUA3_w6Dx7TX" class="button">VTS Sponsorship Details</a> -->
-        <a href="https://docs.google.com/spreadsheets/d/12LyD326ExmPICQBsNpWVQ8U2RSERUFkDVZFwbp0E3bI/edit#gid=0" class="button">Miscellaneous Database </a>
+        <!-- <a href="https://docs.google.com/spreadsheets/d/12LyD326ExmPICQBsNpWVQ8U2RSERUFkDVZFwbp0E3bI/edit#gid=0" class="button">Miscellaneous Database </a> -->
         <!-- <a href="https://drive.google.com/drive/folders/1f1WPgXysDXC-iIcHsnAlqEOus2W4peCd?usp=sharing" class="button">Fresher's Party</a> -->
     </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAfILImMFGaaXPCggUgdmTAMliW0giv4DY",
+            authDomain: "epecpr2324.firebaseapp.com",
+            projectId: "epecpr2324",
+            storageBucket: "epecpr2324.appspot.com",
+            messagingSenderId: "959705690151",
+            appId: "1:959705690151:web:c591bf4727bd3221d15e02",
+            measurementId: "G-M90HNGTMGX"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // Check authentication status on page load
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                // If user is not authenticated, redirect to the login page
+                window.location.href = "https://epecpr.github.io/prepec/";
+            }
+        });
+    </script>
 
 </body>
 </html>
